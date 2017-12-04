@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./assets/js/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css">
+<script src="" type="text/javascript"></script>
+</head>
+<body>
+	<div class="container">
+	<h3>Form Pendaftaran :</h3>
+	</div>
+	<div class="container">
+		<div class="col-md-12">
+			<div class="container-fluid"  style="padding-bottom: 5px">
+				<input type="text" name="username" class="form-control username">				
+			</div>
+			<div class="container-fluid"  style="padding-bottom: 5px">
+				<input type="text" name="alamat" class="form-control alamat">
+			</div>
+			<div class="container-fluid"  style="padding-bottom: 5px">
+				<input type="text" name="no_telp" class="form-control no_telp">
+			</div>
+			<div class="container-fluid"  style="padding-bottom: 5px">
+				<input type="text" name="nama_lengkap" class="form-control nama_lengkap">
+			</div>
+			<div class="container-fluid"  style="padding-bottom: 5px">
+				<input class="btn btn-info klik" type="submit" name="submit" value="submit">
+			</div>
+			<div class="content">
+					
+			</div>	
+		</div>
+	</div>
+
+	<div class="container">
+		Pilih Benih
+		<select id="benih">
+	    <option value="kacang">Kacang</option>
+	    <option lama="5 bulan" berat="100kg" harga="Rp 700.000">Padi</option>
+	    <option lama="4 bulan" berat="2kg" harga="Rp 10.000">Semangka</option>
+	    <option lama="5 bulan" berat="3kg" harga="Rp 80.000">Semangka</option>
+	    <option lama="3 bulan" berat="4kg" harga="Rp 4.500">Timun</option>
+		</select>
+		<br>
+		Lama tanam <input type="text" id="lama-tanam" /><br>
+		Berat <input type="text" id="berat" /><br>
+		Harga <input type="text" id="harga" />
+	</div>
+
+	<script>
+		$(document).ready(function() {
+			$("#benih").on("change", function(){
+			  // ambil nilai
+			  	  var hasil = $('#benih').val();
+				  var lama = $('#benih option:selected').attr("lama");
+				  var berat = $('#benih option:selected').attr("berat");
+				  var harga = $('#benih option:selected').attr("harga");
+	  
+			  // pindahkan nilai ke input
+				  $('#lama-tanam').val(hasil);
+				  $('#berat').val(berat);
+				  $('#harga').val(harga);
+			});
+
+			change(function(event) {
+				event.preventDefault();
+				kurangi();
+				$('.no_telp').val(kurangi);
+			});
+			$('.klik').click(function(event) {
+				event.preventDefault();
+				var username = $('.username').val();
+				localStorage.setItem("username", username);
+				alert( "username = " + localStorage.getItem("username"));				
+			});
+
+
+		});
+
+		function loadData(){
+			$.ajax({
+				type:'json',
+				url:'http://localhost/user_futsal/php/read.php',
+				success:function(result){
+					$('.content').html(result);
+				}
+			});
+		}
+
+		function kurangi(){
+			var mulai = $('.username').val();
+			var selesai = $('.alamat').val();
+			var kurangi = (selesai-mulai);
+		}
+			
+	</script>
+</body>
+</html>
