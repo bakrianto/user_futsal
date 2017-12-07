@@ -1,0 +1,32 @@
+<div class="col-md-12">
+	<h3>Jadwal Pertandingan</h3>
+</div>
+<div>
+	<img src="" alt="">		
+</div>
+
+<div class="col-md-12">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>Mulai</th>
+				<th>Selesai</th>
+				<th>Status</th>
+			</tr>
+		</thead>
+		<tbody class="jadwal">
+		</tbody>
+	</table>
+</div>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	    $.ajax({url: "http://aplikasifutsal.000webhostapp.com/php/read_jadwal.php", success: function(result){
+	        $(".jadwal").html(result);
+	    }});
+	});
+</script>

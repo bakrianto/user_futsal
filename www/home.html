@@ -1,0 +1,59 @@
+  <div class='col-md-12 text-center klik_menu'>
+      <h4>Selamat Datang!</h4>
+      <strong><p class="status text-success"></p></strong>
+  </div>
+  <div class='menu'>
+
+      <div class='row'>
+        <button id="pesan" class='btn btn-lg btn-default btn-block klik_menu'>Pesan Lapangan</button>      
+      </div>
+      <div class='row'>
+        <button id="jadwal" class='btn btn-lg btn-default btn-block btn-jadwal klik_menu'>Jadwal</button>    
+      </div>
+      <div class='row'>
+        <button id="profile" class='btn btn-lg btn-default btn-block klik_menu'>Edit Profile</button>     
+      </div>
+      <div class='row'>
+        <button id="logout" class='btn btn-lg btn-default btn-block logout klik_menu'>Logout</button>
+      </div>
+
+  </div>
+
+  <div class="content">
+    
+  </div>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+
+          $('.status').html(localStorage.getItem("user_login"));
+
+          $('.klik_menu').click(function(){
+            var menu = $(this).attr('id');
+            if(menu == "home"){
+              $('.content').show();
+              $('.content').load('home.html');
+              $('.klik_menu').hide();           
+            }else if(menu == "jadwal"){
+              $('.content').show();
+              $('.content').load('jadwal.html');
+              $('.klik_menu').hide();           
+            }else if(menu == "profile"){
+              $('.content').show();
+              $('.content').load('edit_profile.html');
+              $('.klik_menu').hide();          
+            }else if(menu == "pesan"){
+              $('.content').show();
+              $('.content').load('pesan_lapangan.html');
+              $('.klik_menu').hide();
+            }
+          });
+
+          $(".logout").click(function() {
+            localStorage.clear();
+            $('.home').hide();
+            $('.login').show();
+          });
+
+      });
+    </script>

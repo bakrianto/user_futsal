@@ -1,0 +1,18 @@
+	<div class="edit-profile">
+		
+	</div>
+	<script src="./assets/js/jquery.min.js" type="text/javascript"></script>
+	<script>
+		$(document).ready(function() {
+
+			$.ajax({
+				url:'http://aplikasifutsal.000webhostapp.com/php/tampil_update.php?username='+localStorage.getItem("user_login"),
+				success:function(q){
+					$('.edit-profile').html(q);
+				}
+
+			});
+
+			$
+		});
+	</script>
